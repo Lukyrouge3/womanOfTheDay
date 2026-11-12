@@ -33,7 +33,9 @@ One note per woman. See `content-sample/women/lise-meitner.md` for a complete ex
 
 In the bio, write `[^2]` to link to source number 2.
 
-When no one is on today's date, the page shows the nearest date and says so.
+When no one is on today's date, the page shows the nearest date.
+
+Each woman also has a permanent page at `/<note-filename>` (e.g. `/lise-meitner`), and every share button and copy link points there. Renaming a note breaks old links, so pick the filename once.
 
 ## Deploy (OVH)
 

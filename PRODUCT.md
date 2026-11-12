@@ -35,7 +35,7 @@ The site shows one date and one story each day, and every entry is reviewed by a
 ## Capabilities and Constraints
 
 - **Today's page:** headline hook, then the full bio, then sources and further reading.
-- **Share buttons and OG preview images** for each entry.
+- **Share buttons and OG preview images** for each entry. Shares point to the woman's permanent page (`/<slug>`, the note's filename), so old links stay relevant after her day. This is a permalink, not date browsing.
 - **"Suggest a woman" form.**
 - **Fallback pick:** on a day with no approved entry, the page features a woman from a nearby date and says so clearly.
 - **Fuzzy birthdates:** when a woman's birthdate is unknown, she is featured on another documented date (death, baptism, key achievement) and the page labels the date type.
