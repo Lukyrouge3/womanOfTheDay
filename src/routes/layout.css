@@ -1,0 +1,137 @@
+@import 'tailwindcss';
+@import '@fontsource/atkinson-hyperlegible/400.css';
+@import '@fontsource/atkinson-hyperlegible/400-italic.css';
+@import '@fontsource/atkinson-hyperlegible/700.css';
+@import '@fontsource/courier-prime/400.css';
+@import '@fontsource/courier-prime/700.css';
+
+@font-face {
+	font-family: 'Le Murmure';
+	src:
+		url('/fonts/le-murmure/LeMurmure-Regular.woff2') format('woff2'),
+		url('/fonts/le-murmure/LeMurmure-Regular.woff') format('woff');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+/* Spot inks of the riso world. Light theme only, by brief. */
+@theme {
+	--color-paper: #f3f1ec;
+	--color-paper-shade: #e6e3dc;
+	--color-ink: #1d1d1b;
+	--color-ink-soft: #46443f;
+	--color-pink: #ff48b0;
+	--color-pink-deep: #b4005f;
+	--color-blue: #0078bf;
+	--color-blue-deep: #005a91;
+	--color-yellow: #ffe800;
+	--color-plaque: #dddad3;
+	--color-plaque-ink: #48473f;
+	--color-overprint: #002284;
+
+	--font-display: 'Le Murmure', 'Atkinson Hyperlegible', sans-serif;
+	--font-body: 'Atkinson Hyperlegible', system-ui, sans-serif;
+	--font-detail: 'Courier Prime', 'Courier New', monospace;
+
+	--ease-slap: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+	:root {
+		/* Newsprint grain, shared by the paper and every ink solid. */
+		/* Ink solids mottle more than bare paper. */
+		--grain-ink: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.55' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .1 0 0 0 0 .3 0 0 0 .9 -.25'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+		--grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .11 0 0 0 0 .11 0 0 0 0 .1 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E");
+	}
+	html {
+		background: var(--color-paper);
+		color: var(--color-ink);
+		font-family: var(--font-body);
+		-webkit-text-size-adjust: 100%;
+		text-rendering: optimizeLegibility;
+		scroll-padding-top: 1.5rem;
+	}
+	html {
+		scroll-behavior: smooth;
+	}
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+	}
+	body {
+		min-height: 100dvh;
+		/* Newsprint grain: a faint fibre noise in the paper itself. */
+		background-image: var(--grain);
+	}
+	::selection {
+		background: var(--color-yellow);
+		color: var(--color-ink);
+	}
+	:focus-visible {
+		outline: 3px solid var(--color-blue);
+		outline-offset: 3px;
+		border-radius: 1px;
+	}
+	html {
+		scrollbar-color: var(--color-ink-soft) var(--color-paper-shade);
+		accent-color: var(--color-pink-deep);
+		caret-color: var(--color-pink-deep);
+	}
+}
+
+/* Reading column: calm, real measure; only the paper's own faint grain behind it. */
+.prose-bio {
+	font-size: 1.125rem;
+	line-height: 1.65;
+	max-width: 65ch;
+	color: var(--color-ink);
+	font-variant-numeric: oldstyle-nums;
+}
+.prose-bio p {
+	margin: 0 0 1.1em;
+	text-wrap: pretty;
+}
+.prose-bio h2 {
+	font-family: var(--font-display);
+	font-weight: 400;
+	font-size: clamp(1.75rem, 1.4rem + 1.4vw, 2.25rem);
+	line-height: 1.05;
+	color: var(--color-blue-deep);
+	margin: 2.2em 0 0.55em;
+	text-wrap: balance;
+}
+.prose-bio em {
+	font-style: italic;
+}
+.prose-bio a:not(.src-mark a) {
+	text-decoration: underline;
+	text-decoration-color: var(--color-pink);
+	text-decoration-thickness: 2px;
+	text-underline-offset: 3px;
+}
+.src-mark {
+	font-family: var(--font-detail);
+	font-size: 0.75em;
+	line-height: 0;
+	position: relative;
+	top: -0.45em;
+	vertical-align: baseline;
+	margin-left: 0.08em;
+	font-variant-numeric: lining-nums;
+}
+.src-mark a {
+	padding: 0 0.15em;
+	color: var(--color-blue-deep);
+	font-weight: 700;
+	text-decoration: none;
+	border-radius: 2px;
+}
+.src-mark a:hover {
+	background: var(--color-yellow);
+	color: var(--color-ink);
+}
+.src-mark + .src-mark {
+	margin-left: 0.05em;
+}

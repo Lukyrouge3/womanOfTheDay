@@ -1,0 +1,14 @@
+services:
+  web:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3000:3000" # put a reverse proxy with HTTPS (Caddy, nginx) in front
+    environment:
+      ORIGIN: https://example.org # set to the real domain
+    volumes:
+      - ./vault:/vault:ro # checkout of the vault repo; `git pull` there to publish
+      - suggestions:/data
+
+volumes:
+  suggestions:
