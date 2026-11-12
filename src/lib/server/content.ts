@@ -13,9 +13,9 @@ export function vaultRoot(): string {
 	return path.resolve(VAULT_PATH || 'content-sample');
 }
 
-/** Drafts are only ever shown when explicitly enabled, and never in production builds. */
+/** Drafts show only when SHOW_DRAFTS=true (set in your local .env; never in Docker). */
 export function showDrafts(): boolean {
-	return dev && SHOW_DRAFTS === true;
+	return SHOW_DRAFTS === true;
 }
 
 const marked = new Marked({ gfm: true, breaks: false });
@@ -120,10 +120,13 @@ function parse(file: string): Entry | null {
 	};
 }
 
-let cache: { at: number; entries: Entry[] } | null = null;
+let publicCache: { at: number; entries: Entry[] } | null = null;
+let draftCache: { at: number; entries: Entry[] } | null = null;
 
 /** Every publishable entry. Re-reads the vault at most once a minute so `git pull` shows up without a restart. */
 export function loadEntries(): Entry[] {
+	const drafts = showDrafts();
+	const cache = drafts ? draftCache : publicCache;
 	if (cache && Date.now() - cache.at < (dev ? 0 : 60_000)) return cache.entries;
 	const entries = walk(vaultRoot())
 		.map((f) => {
@@ -134,8 +137,9 @@ export function loadEntries(): Entry[] {
 				return null;
 			}
 		})
-		.filter((e): e is Entry => !!e && (e.status === 'approved' || showDrafts()))
+		.filter((e): e is Entry => !!e && (e.status === 'approved' || drafts))
 		.sort((a, b) => a.name.localeCompare(b.name));
-	cache = { at: Date.now(), entries };
+	if (drafts) draftCache = { at: Date.now(), entries };
+	else publicCache = { at: Date.now(), entries };
 	return entries;
 }

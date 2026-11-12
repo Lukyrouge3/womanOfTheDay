@@ -8,7 +8,7 @@ export const variables = defineEnvVars({
 		schema: optional
 	},
 	SHOW_DRAFTS: {
-		description: 'Dev only: "true" also shows draft entries, stamped as not reviewed.',
+		description: '"true" also shows draft entries (dev or pnpm preview). Never set it on the server.',
 		schema: (v) => v === 'true'
 	},
 	SITE_TZ: {
