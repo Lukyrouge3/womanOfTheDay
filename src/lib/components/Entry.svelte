@@ -109,7 +109,7 @@
 		{/if}
 
 		<figure class="[grid-area:photo]">
-			<RisoPortrait image={entry.image} name={entry.name} />
+			<RisoPortrait image={entry.image} name={entry.name} eager={first} />
 			{#if entry.image}
 				<figcaption class="mt-2 hidden font-detail text-[0.8125rem] leading-snug text-ink-soft sm:block">
 					{#if entry.image.caption}{entry.image.caption}{/if}

@@ -55,3 +55,9 @@ export const DATE_TYPE_VERB: Record<DateType, string> = {
 	baptism: 'Baptised',
 	achievement: 'On this day'
 };
+
+/** Rendered widths of the portrait slot (see Entry's grid), so the browser fetches a small resized file. */
+export const PORTRAIT_SIZES = '(min-width: 768px) 22rem, (min-width: 640px) 13rem, 9.5rem';
+export const portraitSrc = (src: string, w = 480) => `${src}?w=${w}`;
+export const portraitSrcset = (src: string) =>
+	[240, 360, 480, 720, 960].map((w) => `${portraitSrc(src, w)} ${w}w`).join(', ');

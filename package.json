@@ -36,6 +36,7 @@
 		"@lucide/svelte": "^1.72.0",
 		"@resvg/resvg-js": "^2.6.2",
 		"satori": "^0.63.2",
+		"sharp": "^0.35.5",
 		"simple-icons": "^16.37.0"
 	}
 }

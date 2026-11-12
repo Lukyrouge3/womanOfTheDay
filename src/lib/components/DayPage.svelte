@@ -3,7 +3,7 @@
 	import Entry from './Entry.svelte';
 	import RisoDefs from './RisoDefs.svelte';
 	import SuggestForm from './SuggestForm.svelte';
-	import type { Entry as EntryT } from '#lib/types.ts';
+	import { PORTRAIT_SIZES, portraitSrc, portraitSrcset, type Entry as EntryT } from '#lib/types.ts';
 
 	type FormState = { sent?: boolean; errors?: Record<string, string>; values?: Record<string, string> } | null | undefined;
 
@@ -49,6 +49,17 @@
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
 		<meta property="og:image:alt" content="{lead.hook} — {lead.name}" />
+	{/if}
+	{#if lead?.image}
+		<!-- The first portrait is the biggest thing on screen: fetch it before the browser finds the <img>. -->
+		<link
+			rel="preload"
+			as="image"
+			href={portraitSrc(lead.image.src)}
+			imagesrcset={portraitSrcset(lead.image.src)}
+			imagesizes={PORTRAIT_SIZES}
+			fetchpriority="high"
+		/>
 	{/if}
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="theme-color" content="#f3f1ec" />

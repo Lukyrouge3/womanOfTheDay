@@ -1,7 +1,8 @@
 <script lang="ts">
-	import type { EntryImage } from '#lib/types.ts';
+	import { PORTRAIT_SIZES, portraitSrc, portraitSrcset, type EntryImage } from '#lib/types.ts';
 
-	let { image, name }: { image?: EntryImage; name: string } = $props();
+	let { image, name, eager = false }: { image?: EntryImage; name: string; eager?: boolean } = $props();
+	const srcset = $derived(image ? portraitSrcset(image.src) : undefined);
 	let failed = $state(false);
 	// Size the all-type name so its longest word fills the slot (Le Murmure caps ≈ 0.4em wide).
 	const fit = $derived(
@@ -10,22 +11,27 @@
 </script>
 
 {#if image && !failed}
-	<!-- Two passes of the same real photo, each screened in one ink and overprinted slightly off register. -->
+	<!-- Two passes of the same real photo, each screened in one ink and overprinted slightly off register.
+	     Both use the same small resized file, so they arrive and appear together. -->
 	<div class="relative isolate aspect-[4/5] overflow-hidden" role="img" aria-label={image.alt}>
 		<img
-			src={image.src}
+			src={portraitSrc(image.src)}
+			{srcset}
+			sizes={PORTRAIT_SIZES}
 			alt=""
 			class="ink-pink block h-full w-full translate-x-[2px] translate-y-[1.5px] scale-[1.01] object-cover"
-			loading="lazy"
-			decoding="async"
+			loading={eager ? 'eager' : 'lazy'}
+			fetchpriority={eager ? 'high' : 'auto'}
 			onerror={() => (failed = true)}
 		/>
 		<img
-			src={image.src}
+			src={portraitSrc(image.src)}
+			{srcset}
+			sizes={PORTRAIT_SIZES}
 			alt=""
 			class="ink-blue absolute inset-0 block h-full w-full object-cover mix-blend-multiply"
-			loading="lazy"
-			decoding="async"
+			loading={eager ? 'eager' : 'lazy'}
+			fetchpriority={eager ? 'high' : 'auto'}
 		/>
 	</div>
 {:else}
