@@ -31,7 +31,7 @@ One note per woman. See `content-sample/women/lise-meitner.md` for a complete ex
 | `image` | `file`, `alt`, `caption`, `credit`, `license`, `source_url`. Leave it out and the page uses a type-only treatment |
 | `sources`, `further_reading` | Lists of `title` and optional `url` |
 
-In the bio, write `[^2]` to link to source number 2.
+In the bio, write `[^2]` to link to source number 2, and `==like this==` to highlight words (same as Obsidian's highlight).
 
 When no one is on today's date, the page shows the nearest date.
 

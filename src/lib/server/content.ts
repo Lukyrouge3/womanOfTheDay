@@ -46,9 +46,13 @@ function sources(v: unknown): Source[] {
 		.map((s) => ({ title: str(s.title)!, url: str(s.url) }));
 }
 
-/** Turn [^3] into a numbered link to the matching source. */
+/**
+ * Turn [^3] into a numbered link to the matching source, and Obsidian's ==highlight== into a
+ * highlighter stroke (<mark>). Highlights can't span paragraphs, same as in Obsidian.
+ */
 function renderBio(body: string, slug: string, count: number): string {
-	const withMarks = body.replace(/ ?\[\^(\d+)\]/g, (_, n: string) => {
+	const highlighted = body.replace(/==(?=\S)([^\n]*?\S)==/g, '<mark>$1</mark>');
+	const withMarks = highlighted.replace(/ ?\[\^(\d+)\]/g, (_, n: string) => {
 		const i = Number(n);
 		if (i < 1 || i > count) return '';
 		return `<sup class="src-mark"><a href="#${slug}-src-${i}" id="${slug}-ref-${i}" aria-label="Source ${i}">${i}</a></sup>`;

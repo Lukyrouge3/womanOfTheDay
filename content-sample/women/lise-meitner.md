@@ -42,11 +42,11 @@ She rose anyway. She headed the physics department of the Kaiser Wilhelm Institu
 
 When Germany annexed Austria in 1938, Meitner, who was of Jewish descent, lost the protection of her Austrian passport. She escaped to Sweden in July with almost nothing.[^1]
 
-That December, Hahn and Fritz Strassmann found barium in uranium bombarded with neutrons. They could not explain it, and Hahn wrote to Meitner. Walking in the snow with her nephew Otto Robert Frisch, she worked out what had happened: the uranium nucleus had split in two, releasing an enormous amount of energy. Their paper in *Nature* gave the process its name: fission.[^2]
+That December, Hahn and Fritz Strassmann found barium in uranium bombarded with neutrons. They could not explain it, and Hahn wrote to Meitner. Walking in the snow with her nephew Otto Robert Frisch, she worked out what had happened: ==the uranium nucleus had split in two==, releasing an enormous amount of energy. Their paper in *Nature* gave the process its name: fission.[^2]
 
 ## The prize
 
-In November 1945, the 1944 Nobel Prize in Chemistry went to Hahn alone, for the discovery of the fission of heavy nuclei.[^3] Meitner had been nominated for Nobel Prizes many times. Historians who later studied the committee's files concluded that her exclusion came from disciplinary bias, the politics of the war years, and the committee's failure to understand her physics.[^4]
+In November 1945, ==the 1944 Nobel Prize in Chemistry went to Hahn alone==, for the discovery of the fission of heavy nuclei.[^3] Meitner had been nominated for Nobel Prizes many times. Historians who later studied the committee's files concluded that her exclusion came from disciplinary bias, the politics of the war years, and the committee's failure to understand her physics.[^4]
 
 Hahn, for his part, came to describe the discovery as a chemist's alone.[^4]
 
