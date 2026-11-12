@@ -1,0 +1,41 @@
+# For Coolify. Same site as docker-compose.yml, plus a small "notes" helper
+# that clones the notes repo and pulls it again every few minutes.
+services:
+  web:
+    build: .
+    restart: unless-stopped
+    expose:
+      - "3000" # Coolify's proxy handles the domain and HTTPS
+    environment:
+      ORIGIN: ${ORIGIN} # e.g. https://womanoftheday.example
+    volumes:
+      - vault:/vault:ro
+      - suggestions:/data
+    depends_on:
+      - notes
+
+  notes:
+    image: alpine/git:latest
+    restart: unless-stopped
+    environment:
+      NOTES_REPO: ${NOTES_REPO} # e.g. github.com/<user>/<notes-repo>.git
+      NOTES_TOKEN: ${NOTES_TOKEN} # GitHub token with read access to the notes repo
+      PULL_EVERY: ${PULL_EVERY:-300} # seconds
+    volumes:
+      - vault:/vault
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        if [ -z "$$NOTES_TOKEN" ] || [ -z "$$NOTES_REPO" ]; then echo "NOTES_TOKEN or NOTES_REPO is not set"; sleep 60; exit 1; fi
+        repo="$${NOTES_REPO#https://}"
+        url="https://x-access-token:$$NOTES_TOKEN@$$repo"
+        if [ ! -d /vault/.git ]; then git clone --depth 1 "$$url" /vault || { sleep 60; exit 1; }; fi
+        git -C /vault remote set-url origin "$$url"
+        while true; do
+          git -C /vault fetch --depth 1 -q origin && git -C /vault reset --hard -q FETCH_HEAD || echo "pull failed"
+          sleep "$$PULL_EVERY"
+        done
+
+volumes:
+  vault:
+  suggestions:
