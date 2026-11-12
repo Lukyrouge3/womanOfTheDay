@@ -7,6 +7,23 @@
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">
+		<script>
+			// The fonts ship inside the stylesheet, so they're ready within a few ms of it. Hold the
+			// first frame until then (never more than 0.8s), so no line re-wraps after it's shown.
+			(function () {
+				var d = document.documentElement;
+				if (!document.fonts || !document.fonts.load) return;
+				d.style.visibility = 'hidden';
+				var show = function () { d.style.visibility = ''; };
+				Promise.all([
+					document.fonts.load('400 1em "Le Murmure"'),
+					document.fonts.load('400 1em "Atkinson Hyperlegible"'),
+					document.fonts.load('700 1em "Atkinson Hyperlegible"'),
+					document.fonts.load('400 1em "Courier Prime"')
+				]).then(show, show);
+				setTimeout(show, 800);
+			})();
+		</script>
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
 </html>

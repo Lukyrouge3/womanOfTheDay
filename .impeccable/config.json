@@ -1,0 +1,26 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-font",
+        "value": "le murmure fallback",
+        "createdAt": "2026-11-12T14:20:49.251Z",
+        "reason": "Claude: metric-matched stand-in @font-face (local Arial/Courier New with size-adjust) to prevent layout shift; not a brand font"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "atkinson fallback",
+        "createdAt": "2026-11-12T14:20:49.258Z",
+        "reason": "Claude: metric-matched stand-in @font-face (local Arial/Courier New with size-adjust) to prevent layout shift; not a brand font"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "courier prime fallback",
+        "createdAt": "2026-11-12T14:20:49.266Z",
+        "reason": "Claude: metric-matched stand-in @font-face (local Arial/Courier New with size-adjust) to prevent layout shift; not a brand font"
+      }
+    ]
+  }
+}

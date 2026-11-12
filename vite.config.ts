@@ -4,6 +4,10 @@ import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+	build: {
+		// The faces seen on first paint ship inside the CSS: a font arriving late reflows the page.
+		assetsInlineLimit: (file) => (file.includes('/lib/assets/fonts/') ? true : undefined)
+	},
 	plugins: [
 		tailwindcss(),
 		sveltekit({

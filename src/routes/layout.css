@@ -1,18 +1,132 @@
 @import 'tailwindcss';
-@import '@fontsource/atkinson-hyperlegible/400.css';
-@import '@fontsource/atkinson-hyperlegible/400-italic.css';
-@import '@fontsource/atkinson-hyperlegible/700.css';
-@import '@fontsource/courier-prime/400.css';
-@import '@fontsource/courier-prime/700.css';
 
 @font-face {
 	font-family: 'Le Murmure';
-	src:
-		url('/fonts/le-murmure/LeMurmure-Regular.woff2') format('woff2'),
-		url('/fonts/le-murmure/LeMurmure-Regular.woff') format('woff');
+	/* Inlined into the stylesheet (see vite.config.ts), so headlines never render before their face. */
+	src: url('../lib/assets/fonts/LeMurmure-Regular.woff2') format('woff2');
 	font-weight: 400;
 	font-style: normal;
 	font-display: swap;
+}
+
+/* Self-hosted and preloaded, so text appears in the right face on first paint. */
+@font-face {
+	font-family: 'Atkinson Hyperlegible';
+	src: url('/fonts/atkinson-hyperlegible/atkinson-hyperlegible-latin-ext-400-normal.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: fallback;
+	unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+	font-family: 'Atkinson Hyperlegible';
+	src: url('../lib/assets/fonts/atkinson-hyperlegible-latin-400-normal.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: fallback;
+	unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+	font-family: 'Atkinson Hyperlegible';
+	src: url('/fonts/atkinson-hyperlegible/atkinson-hyperlegible-latin-ext-400-italic.woff2') format('woff2');
+	font-weight: 400;
+	font-style: italic;
+	font-display: fallback;
+	unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+	font-family: 'Atkinson Hyperlegible';
+	src: url('/fonts/atkinson-hyperlegible/atkinson-hyperlegible-latin-400-italic.woff2') format('woff2');
+	font-weight: 400;
+	font-style: italic;
+	font-display: fallback;
+	unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+	font-family: 'Atkinson Hyperlegible';
+	src: url('/fonts/atkinson-hyperlegible/atkinson-hyperlegible-latin-ext-700-normal.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
+	font-display: fallback;
+	unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+	font-family: 'Atkinson Hyperlegible';
+	src: url('../lib/assets/fonts/atkinson-hyperlegible-latin-700-normal.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
+	font-display: fallback;
+	unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+	font-family: 'Courier Prime';
+	src: url('/fonts/courier-prime/courier-prime-latin-ext-400-normal.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: fallback;
+	unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+	font-family: 'Courier Prime';
+	src: url('../lib/assets/fonts/courier-prime-latin-400-normal.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: fallback;
+	unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+	font-family: 'Courier Prime';
+	src: url('/fonts/courier-prime/courier-prime-latin-ext-700-normal.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
+	font-display: fallback;
+	unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+	font-family: 'Courier Prime';
+	src: url('/fonts/courier-prime/courier-prime-latin-700-normal.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
+	font-display: fallback;
+	unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+/*
+ * Stand-ins with the real faces' proportions, measured from the files. For the first frames of a
+ * hard reload the browser lays text out with these, so nothing moves when the real faces arrive.
+ */
+@font-face {
+	font-family: 'Le Murmure Fallback';
+	src: local('Arial'), local('Liberation Sans'), local('Helvetica'), local('Roboto');
+	size-adjust: 55.83%;
+	ascent-override: 148.67%;
+	descent-override: 50.15%;
+	line-gap-override: 0%;
+}
+@font-face {
+	font-family: 'Atkinson Fallback';
+	src: local('Arial'), local('Liberation Sans'), local('Helvetica'), local('Roboto');
+	size-adjust: 99.84%;
+	ascent-override: 95.16%;
+	descent-override: 29.05%;
+	line-gap-override: 0%;
+}
+@font-face {
+	font-family: 'Atkinson Fallback';
+	src: local('Arial Bold'), local('Arial-BoldMT'), local('Liberation Sans Bold'), local('Helvetica Bold');
+	font-weight: 700;
+	size-adjust: 99.18%;
+	ascent-override: 95.79%;
+	descent-override: 29.24%;
+	line-gap-override: 0%;
+}
+@font-face {
+	font-family: 'Courier Prime Fallback';
+	src: local('Courier New'), local('Liberation Mono'), local('Courier');
+	size-adjust: 99.98%;
+	ascent-override: 78.01%;
+	descent-override: 34.01%;
+	line-gap-override: 0%;
 }
 
 /* Spot inks of the riso world. Light theme only, by brief. */
@@ -30,9 +144,9 @@
 	--color-plaque-ink: #48473f;
 	--color-overprint: #002284;
 
-	--font-display: 'Le Murmure', 'Atkinson Hyperlegible', sans-serif;
-	--font-body: 'Atkinson Hyperlegible', system-ui, sans-serif;
-	--font-detail: 'Courier Prime', 'Courier New', monospace;
+	--font-display: 'Le Murmure', 'Le Murmure Fallback', sans-serif;
+	--font-body: 'Atkinson Hyperlegible', 'Atkinson Fallback', system-ui, sans-serif;
+	--font-detail: 'Courier Prime', 'Courier Prime Fallback', monospace;
 
 	--ease-slap: cubic-bezier(0.16, 1, 0.3, 1);
 }
