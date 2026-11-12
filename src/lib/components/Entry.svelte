@@ -61,7 +61,7 @@
 				>{entry.hook}</span
 			>
 			<p
-				class="hook relative font-display text-[clamp(2.6rem,10.5vw,5.25rem)] leading-[0.92] text-balance text-blue mix-blend-multiply"
+				class="hook relative font-display text-[clamp(2.6rem,10.5vw,5.25rem)] leading-[0.92] text-balance text-overprint"
 			>
 				{entry.hook}
 			</p>

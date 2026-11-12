@@ -96,9 +96,9 @@
 			<button
 				type="submit"
 				disabled={sending}
-				class="mt-8 inline-flex min-h-12 items-center bg-pink px-6 font-display text-3xl leading-none text-blue shadow-[0_8px_14px_-8px_rgb(29_29_27/0.5)] transition-[rotate,translate] duration-200 ease-out hover:-rotate-1 hover:-translate-y-0.5 disabled:cursor-progress disabled:opacity-70"
+				class="mt-8 inline-flex min-h-12 items-center bg-pink px-6 font-display text-3xl leading-none text-overprint shadow-[0_8px_14px_-8px_rgb(29_29_27/0.5)] transition-[rotate,translate] duration-200 ease-out hover:-rotate-1 hover:-translate-y-0.5 disabled:cursor-progress disabled:opacity-70"
 			>
-				<span class="mix-blend-multiply">{sending ? 'Sending…' : 'Send suggestion'}</span>
+				<span>{sending ? 'Sending…' : 'Send suggestion'}</span>
 			</button>
 		</form>
 	{/if}
